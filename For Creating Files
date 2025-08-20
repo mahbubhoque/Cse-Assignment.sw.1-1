@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void create_file(char *path) {
+    FILE *f = fopen(path, "a+");
+    if(f) fclose(f);
+}
+
+int main() {
+    system("mkdir -p admin blocked_numbers unused_cards used_cards user");
+
+    create_file("admin/history.txt");
+    create_file("blocked_numbers/numbers.txt");
+    create_file("unused_cards/40.txt");
+    create_file("unused_cards/60.txt");
+    create_file("unused_cards/100.txt");
+    create_file("used_cards/40.txt");
+    create_file("used_cards/60.txt");
+    create_file("used_cards/100.txt");
+    create_file("user/balance.txt");
+
+    FILE *balance028 = fopen("user/balance.txt","w");
+    if(balance028) { fprintf(balance028,"0"); fclose(balance028); }
+
+    printf("All folders and files created successfully!");
+    return 0;
+}
